@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Love Match 💝</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffedf2;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff4d79;
+        }
+        input {
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid #ff4d79;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff4d79;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff1a57;
+        }
+        #result {
+            font-size: 22px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Valentine Love Match 💖</h1>
+    <p>Enter two names to see your Valentine's fate! 💌🔥</p>
+    
+    <input type="text" id="name1" placeholder="Your Name">
+    <input type="text" id="name2" placeholder="Their Name">
+    <br>
+    <button onclick="calculateLove()">Check Match 💘</button>
+    
+    <p id="result"></p>
+
+    <script>
+        function calculateLove() {
+            let name1 = document.getElementById("name1").value.trim();
+            let name2 = document.getElementById("name2").value.trim();
+            
+            if (!name1 || !name2) {
+                document.getElementById("result").innerText = "❌ Please enter both names!";
+                return;
+            }
+            
+            let combined = (name1 + name2).toLowerCase();
+            let score = 0;
+            
+            for (let char of combined) {
+                score += char.charCodeAt(0);
+            }
+
+            let matchScore = score % 100;
+            let message = "";
+
+            if (matchScore < 35) {
+                message = `💀 ${matchScore}% - RUN! This is a disaster! 🚨💔 Just cancel Valentine’s now! 😭`;
+            } else if (matchScore < 45) {
+                message = `😬 ${matchScore}% - Uh-oh... Awkward Valentine’s dinner? 🍕😅 Maybe just stay friends?`;
+            } else if (matchScore < 60) {
+                message = `🤔 ${matchScore}% - Hmmm... There’s *some* spark, but is it love or just WiFi signal? 📶😂`;
+            } else if (matchScore < 75) {
+                message = `💘 ${matchScore}% - Okayyy! This could work... but don’t forget the chocolates! 🍫💌`;
+            } else if (matchScore < 85) {
+                message = `😍 ${matchScore}% - Omg! This could be true love! Start planning that Valentine’s date! 💑💖`;
+            } else {
+                message = `💍 ${matchScore}% - STOP EVERYTHING! This is your soulmate! Wedding bells soon?! 💍🔥`;
+            }
+
+            document.getElementById("result").innerText = message;
+        }
+    </script>
+
+</body>
+</html>
